@@ -15,7 +15,6 @@ import { GreeterComponent } from './greeter/greeter.component';
   providers: [],
   bootstrap: [
   	AppComponent
-  	, GreeterComponent
   ]
 })
 export class AppModule { }
