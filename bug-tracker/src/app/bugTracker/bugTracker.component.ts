@@ -12,7 +12,11 @@ export class BugTrackerComponent{
 	bugList : Array<Bug> = [];
 
 	trimLength : number = 30;
-	
+
+	sortAttrName : string = 'name';
+
+	sortDesc : boolean = false;
+
 	/*bugOperations : BugOperationsService;
 
 	constructor(_bugOperations : BugOperationsService){
@@ -20,7 +24,10 @@ export class BugTrackerComponent{
 	}*/
 
 	constructor(private bugOperations : BugOperationsService){
-
+		this.bugList.push({ name : 'Server communication failure', isClosed : false});
+		this.bugList.push({ name : 'User actions not recognized', isClosed : true});
+		this.bugList.push({ name : 'Data integrity checks failed', isClosed : false});
+		this.bugList.push({ name : 'Application not responding', isClosed : false});
 	}
 
 	onAddNewClick(newBugName : string){
