@@ -30,9 +30,8 @@ export class BugTrackerComponent{
 		this.bugList.push({ name : 'Application not responding', isClosed : false});
 	}
 
-	onAddNewClick(newBugName : string){
-		let newBug : Bug = this.bugOperations.createNew(newBugName);
-		this.bugList = [...this.bugList, newBug ];
+	onNewBugCreated(newBug : Bug){
+		this.bugList = [...this.bugList, newBug];
 	}
 
 	onBugNameClick(bugToToggle : Bug){

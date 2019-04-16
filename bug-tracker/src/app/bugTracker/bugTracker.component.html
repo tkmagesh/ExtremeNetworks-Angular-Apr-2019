@@ -8,11 +8,7 @@
  	<label for="">Descending ? :</label>
  	<input type="checkbox" (change)="sortDesc=$event.target.checked">
  </section>
- <section class="edit">
- 	<label for="">Bug Name :</label>
- 	<input type="text" #txtBugName>
- 	<input type="button" value="Add New" (click)="onAddNewClick(txtBugName.value)">
- </section>
+ <app-bug-edit (bugAdded)="onNewBugCreated($event)"></app-bug-edit>
  <section class="list">
  	<!-- <select (change)="trimLength=$event.target.value">
  		<option value="30">30</option>
@@ -28,7 +24,7 @@
  				(click)="onBugNameClick(bug)"
  				[ngClass]="{closed : bug.isClosed}"
  			>
- 				{{ bug.name | trimText:trimLength }}
+ 				{{ bug.name | trimText:trimLength}}
  			</span>
  			<div class="datetime">[Created At]</div>
  		</li>

@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BugTrackerComponent } from './bugTracker/bugTracker.component';
 import { BugStatsComponent } from './bugTracker/views/bugStats.component';
+import { BugEditComponent } from './bugTracker/views/bugEdit.component';
 
 import { BugOperationsService } from './bugTracker/services/bugOperations.service';
 
@@ -16,6 +17,7 @@ import { SortPipe } from './bugTracker/pipes/sort.pipe';
     AppComponent
     , BugTrackerComponent
     , BugStatsComponent
+    , BugEditComponent
     , ClosedCountPipe
     , TrimTextPipe
     , SortPipe
