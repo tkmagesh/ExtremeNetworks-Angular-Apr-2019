@@ -1,8 +1,4 @@
-<section class="stats">
- 	<span class="closed">{{getClosedCount()}}</span>
- 	<span> / </span>
- 	<span>{{bugList.length}}</span>
- </section>
+ <app-bug-stats [data]="bugList"></app-bug-stats>
  <section>
  	<label for="">Order By :</label>
  	<select (change)="sortAttrName=$event.target.value">
