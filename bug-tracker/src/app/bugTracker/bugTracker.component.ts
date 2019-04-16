@@ -11,6 +11,8 @@ export class BugTrackerComponent{
 
 	bugList : Array<Bug> = [];
 
+	trimLength : number = 30;
+	
 	/*bugOperations : BugOperationsService;
 
 	constructor(_bugOperations : BugOperationsService){
@@ -34,5 +36,7 @@ export class BugTrackerComponent{
 		this.bugList = this.bugList.filter(bug => !bug.isClosed);
 	}
 
-	
+	getClosedCount(){
+		return this.bugList.reduce((result, bug) => bug.isClosed ? ++result : result, 0);
+	}
 }
