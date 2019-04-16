@@ -4,6 +4,12 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
+/*import { Calculator } from './calculator';
+
+var calc = new Calculator();
+console.log(calc.add(100,200));
+console.log(calc.subtract(100,200));*/
+
 if (environment.production) {
   enableProdMode();
 }
