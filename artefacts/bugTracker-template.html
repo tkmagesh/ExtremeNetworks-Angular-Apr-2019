@@ -12,6 +12,22 @@
 		(done) 6. Improve the bug display
 		(done) 7. Sort the bugs
 		8. Persist the bugs in the localStorage
+			window.localStorage
+			==================
+			* key/value store
+			* key must be unique (introduce an 'id' attribute to the bug)
+			* both key & value must be strings (use JSON.stringify and JSON.parse for serialization and deserialization)
+			* ~10 MB limit
+			* Same Origin Policy
+			* APIS
+			======
+				- setItem(key, value)
+				- getItem(key) => value
+				- removeItem(key)
+				- key(index) => key at index
+				- clear()
+				- length
+
 		9. Display 'createdAt' for each bug
 		10. Persist the bugs in the server
 		11. Make the bugs accessible using unique urls (routing)
