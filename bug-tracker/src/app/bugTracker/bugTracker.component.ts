@@ -24,7 +24,8 @@ export class BugTrackerComponent{
 	}*/
 
 	constructor(private bugOperations : BugOperationsService){
-		
+		//TODO : change this
+		this.bugList = this.bugOperations.getAll();
 	}
 
 	onNewBugCreated(newBug : Bug){
@@ -37,7 +38,12 @@ export class BugTrackerComponent{
 	}
 
 	onRemoveClosedClick(){
-		this.bugList = this.bugList.filter(bug => !bug.isClosed);
+		this.bugList
+			.filter(bug => bug.isClosed)
+			.forEach(closedBug => {
+				this.bugOperations.remove(closedBug);
+				this.bugList = this.bugList.filter(bug => bug !== closedBug)
+			});
 	}
 
 	getClosedCount(){
