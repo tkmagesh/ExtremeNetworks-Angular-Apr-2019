@@ -1,13 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Bug } from './models/Bug';
 import { BugOperationsService } from './services/bugOperations.service';
+import { HttpClient } from '@angular/common/http';
+
+import * as moment from 'moment';
+
+console.log(moment('2019-03-17T05:05:10.603Z').fromNow());
 
 
 @Component({
 	selector : 'app-bug-tracker',
 	templateUrl : 'bugTracker.component.html'
 })
-export class BugTrackerComponent{
+export class BugTrackerComponent implements OnInit{
 
 	bugList : Array<Bug> = [];
 
@@ -24,8 +29,14 @@ export class BugTrackerComponent{
 	}*/
 
 	constructor(private bugOperations : BugOperationsService){
-		//TODO : change this
-		this.bugList = this.bugOperations.getAll();
+		
+	}
+
+	ngOnInit(){
+
+		this.bugOperations
+			.getAll()
+			.subscribe(bugs => this.bugList = bugs);
 	}
 
 	onNewBugCreated(newBug : Bug){
@@ -33,21 +44,18 @@ export class BugTrackerComponent{
 	}
 
 	onBugNameClick(bugToToggle : Bug){
-		let toggledBug = this.bugOperations.toggle(bugToToggle);
-		this.bugList = this.bugList.map(bug => bug === bugToToggle ? toggledBug : bug);
+		this.bugOperations
+			.toggle(bugToToggle)
+			.subscribe(toggledBug => this.bugList = this.bugList.map(bug => bug === bugToToggle ? toggledBug : bug));
 	}
 
 	onRemoveClosedClick(){
 		this.bugList
 			.filter(bug => bug.isClosed)
 			.forEach(closedBug => {
-				this.bugOperations.remove(closedBug);
-				this.bugList = this.bugList.filter(bug => bug !== closedBug)
+				this.bugOperations
+					.remove(closedBug)
+					.subscribe(_ => this.bugList = this.bugList.filter(bug => bug !== closedBug));
 			});
-	}
-
-	getClosedCount(){
-		console.log('getClosedCount triggered');
-		return this.bugList.reduce((result, bug) => bug.isClosed ? ++result : result, 0);
 	}
 }
